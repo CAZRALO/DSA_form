@@ -1,2 +1,2 @@
 # reference-code
-Sample code for some algorithms implemented using functions
+sample code for some algorithm or data structure
