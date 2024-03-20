@@ -1,2 +1,2 @@
 # reference-code
-Sample code for some typical articles
+Sample code for some algorithms implemented using functions
