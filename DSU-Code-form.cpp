@@ -1,10 +1,10 @@
 //use class 
-class DSU {
+class DisjointSets {
 private:
 	vector<int> parents;
 	vector<int> sizes;
 public:
-	DSU(int size) : parents(size), sizes(size, 1) {
+	DisjointSets(int size) : parents(size), sizes(size, 1) {
 		for (int i = 0; i < size; i++) { parents[i] = i; }
 	}
 	int find(int x) {
