@@ -8,13 +8,13 @@ void build(){
         ST[n+i] = A[i];
     }
     for (int i = n; i >=1; --i) {
-        ST[i]=min(ST[i<<1], ST[i<<1|1);
+        ST[i]=min(ST[i<<1], ST[i<<1|1]);
     }
 }
 
 void update(int pos, int val) {
     for (ST[pos += n] = val; pos > 1; pos >>= 1) {
-        ST[pos>>1]=min(ST[pos], ST[pos^1);
+        ST[pos>>1]=min(ST[pos], ST[pos^1]);
     }
 }
 
