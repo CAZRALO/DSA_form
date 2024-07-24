@@ -1,6 +1,6 @@
 // return minimum of range [l,r]
 const int MAXN=1e5+5;
-vector<int> A[MAXN],ST[2*MAXN];
+vector<int> A(MAXN),ST(2*MAXN);
 int n;
 
 void build(){
