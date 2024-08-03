@@ -19,7 +19,7 @@ void update(int pos, int val) {
 }
 
 int query(int l, int r) {
-    int res = 0;
+    int res = 1e18;
     for (l += n, r += n+1; l < r; l >>= 1, r >>= 1) {
         if (l & 1) { res = min(res, ST[l++]); }
         if (r & 1) { res = min(res, ST[--r]); }
