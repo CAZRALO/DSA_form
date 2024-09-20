@@ -2,10 +2,10 @@
 //cre : USACO Guide
 
 template <typename T> class SparseTable {
-  private:
+private:
 	int n, log2dist;
 	vector<vector<T>> st;
-  public:
+ public:
 	SparseTable(const vector<T> &v) {
 		n = (int)v.size();
 		log2dist = 1 + __lg(n);
@@ -18,7 +18,6 @@ template <typename T> class SparseTable {
 			}
 		}
 	}
-
 	// return minimum on the range [l, r] 
 	T query(int l, int r) {
 		int i = __lg(r - l + 1);
