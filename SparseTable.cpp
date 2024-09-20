@@ -1,3 +1,6 @@
+//O(nlogn) build, O(1) query
+//cre : USACO Guide
+
 template <typename T> class SparseTable {
   private:
 	int n, log2dist;
