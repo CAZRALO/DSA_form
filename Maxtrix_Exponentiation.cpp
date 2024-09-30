@@ -1,16 +1,21 @@
-const int maxn=1e3+5;
-
-struct matrix {
-  int val[maxn][maxn];
-  matrix() {
-    memset(val, 0, sizeof(val));  
+class matrix {
+  int n,m;
+  vector<vector<int>>val;
+public:
+  matrix(int n_, int m_) {
+      n=n_; m=m_;
+  }
+  maxtrix(vector<vector<int>>a) {
+      val=a;
+      n=val.size();
+      m=val[0].size();
   }
   matrix operator * ( const matrix & x) {
-    matrix res;
-    for (int u = 0; u < 2; u++)
-      for (int v = 0; v < 2; v++)
-        for (int i = 0; i < 2; i++)
-          res.val[u][v] = ((ll)val[u][i] * x.val[i][v] + res.val[u][v] ) % MOD;
+      matrix res(n,x.m);
+      for (int u = 0; u < a.n; u++)
+          for (int v = 0; v < b.m; v++)
+              for (int i = 0; i < a.m; i++)
+                  res.val[u][v] = ((ll)val[u][i] * x.val[i][v] + res.val[u][v] ) % MOD;
     return res;
   }
 };
