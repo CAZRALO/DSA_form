@@ -34,7 +34,12 @@ matrix &operator = (const matrix &a) {
     return *this;
 }
 matrix &operator +=(matrix &a, const matrix &b) {
-    
+    for (int i=0;i<a.row;++i) {
+        for (int i=0;i<a.col;++i) {
+            a.arr[i][j]+=b.arr[i][j];
+        }
+    }
+    return a;
 }
 matrix operator + (const matrix &a,const matrix &b) {
     matrix temp=a;
@@ -42,7 +47,12 @@ matrix operator + (const matrix &a,const matrix &b) {
     return temp;
 }
 maxtrix &operator -=(matrix &a, const matrix &b) {
-  
+    for (int i=0;i<a.row;++i) {
+        for (int i=0;i<a.col;++i) {
+            a.arr[i][j]-=b.arr[i][j];
+        }
+    }
+    return a;
 }
 matrix operator -(const matrix &a, const maxtrix &b) {
     matrix temp=a;
@@ -51,9 +61,9 @@ matrix operator -(const matrix &a, const maxtrix &b) {
 }
 matrix &operator *=(matrix &a, const matrix &b) {
     matrix res(a.row,b.col);
-    for (int u = 0; u < a.n; u++)
-        for (int v = 0; v < b.m; v++)
-            for (int i = 0; i < a.m; i++)
+    for (int u = 0; u < a.row; u++)
+        for (int v = 0; v < b.col; v++)
+            for (int i = 0; i < a.row; i++)
                 res.arr[u][v] = ((int)arr[u][i] * b.arr[i][v] + res.arr[u][v] ) % MOD;
     a=res;
     return a;
