@@ -22,14 +22,14 @@ public:
 matrix :: matrix(int n_,int m) {
     row=n_; col=m_;
 }
-matrix :: matrix(vector<vector<int>> &a {
+matrix :: matrix(vector<vector<int>> &{
     arr=a;
     row=a.size();
     col=a[0].size();
 }
 
-matrix &operator = (const matrix &a) {
-    row=a.n; col=a.m; 
+matrix &matrix :: operator = (const matrix &a) {
+    row=a.row; col=a.col; 
     arr=a.arr;
     return *this;
 }
@@ -77,15 +77,15 @@ matrix operator  * (const matrix &a, const matrix &b) {
 istream &operator>>(istream &in, matrix &a) {
     in>>a.row>>a.col;
     for (int i=0;i<a.row;++i) {
-        for (int i=0;i<a.col;++i {
+        for (int j=0;j<a.col;++j) {
             cin>>a.arr[i][j];
         }
     }
-    return i;
+    return in;
 }
-ostream &operator<<(ostream & , const matrix &a) {
+ostream &operator<<(ostream &o , const matrix &a) {
     for (int i=0;i<a.row;++i) {
-        for (int i=0;i<a.col;++i) {
+        for (int j=0;j<a.col;++j) {
             cout<<a.arr[i][j]<<' ';
         }
         cout<<'\n';
