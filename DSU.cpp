@@ -23,7 +23,7 @@ public:
 	bool connected(int x, int y) { return find(x) == find(y); }
 };
 
-//use template 
+//use struct
 
 template <int SZ> struct DSU {
 	int par[SZ], sz[SZ];
