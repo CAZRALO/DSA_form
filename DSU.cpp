@@ -42,5 +42,5 @@ template <int SZ> struct DSU {
 		sz[x] += sz[y], par[y] = x;
 		return 1;
 	}
-  bool connected(int x, int y) { return find(x) == find(y); }
+  	bool isConnected(int x, int y) { return findRoot(x) == findRoot(y); }
 };
