@@ -99,6 +99,8 @@ mt19937 rng((uint32_t)chrono::steady_clock::now().time_since_epoch().count());
 template <class T> using pqg = priority_queue<T, vector<T>, greater<T>>;
 template <class T> using pql = priority_queue<T, vector<T>, less<T>>;
 
+tcT> long long add(T &a, const T b) { a+=b; return a>=MOD?a-MOD:a; } 
+
 //math
 tcT>inline T gcd(T a,T b) { while (b != 0) swap(b, a %= b); return a; }
 tcT>inline T lcm(T a,T b) { return a / gcd(a, b) * b; }
