@@ -7,7 +7,7 @@ int n;
 
 void build (int id, int l, int r ){
     if (l>r) return;
-    if (l==r) st[id]=A[l];
+    if (l==r) {st[id]=A[l]; return; }
     int mid=(l+r)>>1;
     build(id<<1,l,mid);
     build(id<<1|1,mid+1,r);
