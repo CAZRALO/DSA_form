@@ -14,7 +14,7 @@ void build (int id, int l, int r ){
     st[id]=min(st[id<<1],st[id<<1|1]);
 }
 //change value of A[pos] to val
-void update(int id,int l,int r,int pos, int val) {
+void updateVal(int id,int l,int r,int pos, int val) {
     if (l>r || pos<l || pos>r) return;
     if (l==r) {
         A[pos]=val;
@@ -22,14 +22,23 @@ void update(int id,int l,int r,int pos, int val) {
         return;
     }
     int mid=(l+r)>>1;
-    update(id<<1,l,mid,pos,val);
-    update(id<<1|1,mid+1,r,pos,val);
+    updateVal(id<<1,l,mid,pos,val);
+    updateVal(id<<1|1,mid+1,r,pos,val);
     st[id]=min(st[id<<1],st[id<<1|1]);
 }
+
+void update(int pos,int val) {
+    updateVal(1,1,n,pos,val);
+}
+
 //get min value from u to v
-int get(int id,int l,int r,int u,int v){
+int getVal(int id,int l,int r,int u,int v){
     if (u>r || v<l) return INT_MAX; 
     if (u<=l  && r<=v) return st[id];
     int mid=(l+r)>>1;
-    return min(get(id<<1,l,mid,u,v),get(id<<1|1,mid+1,r,u,v));
+    return min(getVal(id<<1,l,mid,u,v),getVal(id<<1|1,mid+1,r,u,v));
+}
+
+int get(int u, int v) {
+    return getVal(1,1,n,u,v);
 }
