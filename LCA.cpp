@@ -1,4 +1,4 @@
-
+#define pii pair<int,int>
 const int LOG=17;
 
 class LCA {
@@ -13,7 +13,7 @@ public:
 		depth[u]=d;
 		par[u][0]=p;
 		//dist[u]=dist[p]+w;
-		fu(i,1,LOG-1) {
+		for (int i = 1; i < LOG; ++i) {
 			par[u][i]=par[par[u][i-1]][i-1];
 		}
 		for (auto v:adj[u]) {
@@ -28,14 +28,14 @@ public:
 	int lca(int u,int v){
 		if (depth[u]<depth[v]) { swap(u,v); }
 		int diff = depth[u] - depth[v];
-		f0d(i,LOG) {
+		for (int i = LOG - 1; i >= 0; --i) {
 			if (MASK(i)<=diff) {
 				u=par[u][i];
 				diff -= MASK(i);
 			}
 		}
 		if (u == v) return u;
-		f0d(i,LOG) {
+		for (int i = LOG - 1; i >= 0; --i) {
 			if (par[u][i] != par[v][i]) {
 				u = par[u][i];
 				v = par[v][i];
