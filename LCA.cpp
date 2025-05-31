@@ -64,6 +64,16 @@ public:
 		}
 		return v;
 	}
+	int kth_parent(int u,int k) {
+		int u = k;
+		for (int i = 0; i < LOG; ++i) {
+		        if (k & (1ll << i)) {
+		            n = par[n][i];
+		            if (n == -1) return -1;
+		        }
+		}
+		    return n;
+	}
 	void addEdge(int u,int v,int w) {
 		adj[u].push_back({v,w});
 		adj[v].push_back({u,w});
