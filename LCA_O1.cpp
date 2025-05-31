@@ -9,10 +9,11 @@ private :
     vector<int>lg;
     vector<vector<int>>st;
 public :
-    void dfs(int u, int p = 0, int d = 1) {
+   void dfs(int u, int p = -1, int d = 1) {
         firstOcc[u] = E.size();
         E.push_back(u);
         depthE.push_back(d);
+        depthNode[u] = d;
         for(int v : adj[u]) {
             if(v == p) continue;
             dfs(v, u, d+1);
@@ -20,12 +21,12 @@ public :
             depthE.push_back(d);
         }
     }
-    void buildLCA(int root = 0) {
-        int M = 2*n - 1;
+    void buildLCA(int root = 1) {
+        int M = 2*n ;
         E.reserve(M);
         depthE.reserve(M);
-        firstOcc.assign(N, -1);
-        depthNode.assign(N, 0);
+        firstOcc.assign(n+1, -1);
+        depthNode.assign(n+1, 0);
         dfs(root);
         lg.assign(M+1, 0);
         for(int i = 2; i <= M; ++i)
@@ -55,5 +56,7 @@ public :
         int idx = rmq(L, R);
         return E[idx];
     }
-
+    int distance(int u, int v) {
+        return depthNode[u] + depthNode[v] - 2 * depthNode[lca(u, v)];
+    }
 };
