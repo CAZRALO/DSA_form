@@ -14,10 +14,9 @@ struct RollingHash{
             hash2[i] = (hash2[i-1] * base + a[i-1]-'a'+1) % MOD2;
         }
     }
-    int getHash1(int l, int r) {
-        return (hash1[r+1]-hash1[l]*power1[r-l+1]%MOD1+MOD1)%MOD1;
-    }
-    int getHash2(int l, int r) {
-        return (hash2[r+1]-hash2[l]*power2[r-l+1]%MOD2+MOD2)%MOD2;
+    pair<int,int> getHash(int l, int r) {
+        int Hash1=hash1[r+1]-hash1[l]*power1[r-l+1]%MOD1+MOD1)%MOD1;
+        int Hash2=hash2[r+1]-hash2[l]*power2[r-l+1]%MOD2+MOD2)%MOD2;
+        return {Hash1,Hash2};
     }
 };
