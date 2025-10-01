@@ -15,21 +15,17 @@ struct SegTree {
         n=n_;
         st.assign(4*n,0);
     }
-    void update(int id,int l,int r,int p,int val){
-        if(l==r){ st[id]=val; return; }
-        int mid=(l+r)/2;
-        if(p<=mid) update(id*2,l,mid,p,val);
-        else update(id*2+1,mid+1,r,p,val);
-        st[id]=st[id*2]+st[id*2+1];
+    void update(int p,int val){ 
+        for (st[p+=n]=val; p > 1; p>>=1) st[p>>1]=st[p]+st[p^1];
     }
-    void update(int p,int val){ update(1,1,n,p,val); }
-    long long query(int id,int l,int r,int u,int v){
-        if(u>r||v<l) return 0;
-        if(u<=l&&r<=v) return st[id];
-        int mid=(l+r)/2;
-        return query(id*2,l,mid,u,v)+query(id*2+1,mid+1,r,u,v);
+    long long query(int l,int r) {
+        int res = 0;
+        for (l+=n,r+=n+1; l < r; l>>=1,r>>=1){
+            if (l&1) res+=st[l++];
+            if (r&1) res+=st[--r];
+        }
+        return res;
     }
-    long long query(int l,int r){ return query(1,1,n,l,r); }
 } seg;
 
 // --- DFS1: tính size + heavy child ---
