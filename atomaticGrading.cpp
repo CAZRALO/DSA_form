@@ -26,7 +26,7 @@ signed main() {
         createTestcase();
         system(ans".exe");
         system(FName".exe");
-        if ("fc "+ans".OUT " + FName".OUT") {
+        if (system("fc "+ans".OUT " + FName".OUT")) {
             cout<<iTest<<" WA";
             return 0;
         } else {
